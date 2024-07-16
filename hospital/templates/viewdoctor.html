@@ -1,0 +1,92 @@
+{% extends 'navbar.html' %}
+
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    th, td {
+        padding: 10px;
+        border: 1px solid #dddddd;
+        text-align: left;
+    }
+
+    th {
+        background-color: #f2f2f2;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+
+    tr:hover {
+        background-color: #f2f2f2;
+    }
+
+    /* .action-buttons button {
+        margin-right: 5px;
+        padding: 5px 10px;
+        border: none;
+        border-radius: 5px;
+        background-color: #007bff;
+        color: #ffffff;
+        cursor: pointer;
+    } */
+</style>
+<body>
+    <h2 style="text-align: center;"><U><B>DOCTOR'S LIST</B></U><img src="{% static 'images/doctor.png' %}" height="70"></h2>
+    <table>
+        <tr>
+        <th>DOCTOR NAME</th>
+        <th>SPECIFICATION</th>
+        <th>CONTACT DETAILS</th>
+        <th>IMAGE</th>
+        <th>ACTION</th>
+    </tr>
+    {% for i in doctors %}
+    <tr>
+        <td>{{i.doctordetails.first_name}} {{i.doctordetails.last_name}}</td>
+        <td>{{i.specification}}</td>
+        <td>{{i.phonenumber}}</td>
+        <td>
+            {% if i.doctorimage %}
+                <img src="{{ i.doctorimage.url }}" height="100">
+            {% else %}
+                No Image Available
+            {% endif %}
+        </td>
+        <td>
+            <form method="post" action="{% url 'editdoctor' i.id %}" style="display: inline;">
+                {% csrf_token %}
+            
+                <button type="submit" class="btn btn-primary">
+                    &#9998; Edit
+                </button>
+        </form>
+        <form method="post" action="{% url 'deletedoctor' i.id %}" style="display: inline;">
+            {% csrf_token %}
+            <button type="button" class="btn btn-danger">
+                <img src="{% static 'images/delete.png' %}" height="20">DELETE</button>
+        </form>
+            </td>
+    </tr>
+    {% endfor %}
+    </table>
+</body>
+</html>
+{% endblock %}

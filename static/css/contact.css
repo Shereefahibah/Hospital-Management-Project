@@ -1,0 +1,31 @@
+.image-container {
+    position: relative;
+    width: 100%;
+    max-height: 500px;
+    overflow: hidden;
+}
+
+.image-container img {
+    width: 100%;
+    height: auto;
+}
+
+.image-container .overlay-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-align: center;
+    text-shadow: 2px 2px 4px #000000;
+}
+
+.image-container .overlay-text h1 {
+    font-size: 3em;
+    margin: 0;
+}
+
+.image-container .overlay-text p {
+    font-size: 1.5em;
+    margin: 0;
+}

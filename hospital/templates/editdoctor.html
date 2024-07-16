@@ -1,0 +1,95 @@
+
+    {% extends 'navbar.html' %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+   
+</head>
+<style>
+   .container {
+    width: 70%;
+    margin: 0 auto; /* Center the container */
+    padding: 20px;
+}
+/* styles.css */
+
+/* Style for form container */
+.form-container {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+/* Style for form labels */
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+/* Style for form inputs */
+input[type="text"],
+input[type="number"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box; /* Ensure padding and border are included in width */
+}
+
+/* Style for submit button */
+button[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+}
+
+/* Style for error messages */
+.error-message {
+    color: red;
+    margin-top: 5px;
+}
+
+</style>
+<body>
+    <div class="container">
+        <h1><b><U>EDIT DOCTOR</U></b></h1>
+    <form method="post" action="/edit_doctor/{{doctors.id}}" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label>DOCTOR FIRST NAME :</label>
+        <input type="text" id="name" name="docfname" value="{{doctors.doctordetails.first_name}}">
+        <label>DOCTOR LAST NAME :</label>
+        <input type="text" id="name" name="docsname" value="{{doctors.doctordetails.last_name}}">
+        <label>CONTACT NO:</label>
+        <input type="number" id="nmbr" name="nmbr" value="{{doctors.phonenumber}}">
+        <label>SPECIFICATION :</label>
+        <input type="text" id="spec" name="docspec" value="{{doctors.specification}}">
+        <label>EMAIL :</label>
+        <input type="text" id="email" name="email" value="{{doctors.doctordetails.email}}">
+        <label>IMAGE</label>
+        <input type="file" id="img" name="img" accept="image/*">
+
+
+        <button type="submit">EDIT</button>
+
+    </form>
+</div>
+</body>
+</html>
+{% endblock %}
+</body>
+</html>

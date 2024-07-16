@@ -1,0 +1,60 @@
+{% extends "navbar.html" %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Our Hospital</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <header class="bg-light py-5">
+        <div class="container d-flex align-items-center">
+            <img src="{% static 'images/doctors.jfif' %}" alt="Doctor" class="img-fluid rounded">
+            <div class="ml-4">
+                <h1 class="text-dark">THE BEST DOCTOR</h1>
+                <h2 class="text-primary">GIVES THE LEAST MEDICINES</h2>
+                <p class="text-secondary">Aenean finibus, nunc imperdiet elementum vestibulum nibh lorem, lobortis eu.</p>
+                <a href="#" class="btn btn-primary mt-3">MORE INFO</a>
+            </div>
+        </div>
+    </header>
+    <section class="features py-5 bg-primary text-white">
+        <div class="container d-flex justify-content-around">
+            <div class="feature text-center">
+                <i class="fas fa-ambulance fa-2x mb-2"></i>
+                <p>Emergency</p>
+            </div>
+            <div class="feature text-center">
+                <i class="fas fa-user-md fa-2x mb-2"></i>
+                <p>Qualified Doctors</p>
+            </div>
+            <div class="feature text-center">
+                <i class="fas fa-procedures fa-2x mb-2"></i>
+                <p>Operation Theater</p>
+            </div>
+            <div class="feature text-center">
+                <i class="fas fa-pills fa-2x mb-2"></i>
+                <p>Free Medicine</p>
+            </div>
+        </div>
+    </section>
+    <section class="about-us py-5 bg-light text-center">
+        <div class="container">
+            <h1>ABOUT US</h1>
+            <p>Welcome to OUR Hospital, a leading healthcare institution dedicated to providing exceptional medical care and unparalleled patient experiences. With a legacy of compassion, innovation, and excellence, we have been serving our community for 10 years. Our state-of-the-art facility is staffed by a team of highly skilled medical professionals who are committed to your well-being.</p>
+            <p>Our mission is to deliver the highest quality medical care that is tailored to meet the unique needs of each patient. Our multidisciplinary approach ensures that every aspect of your health is addressed, from diagnosis and treatment to recovery and beyond. We take pride in offering a comprehensive range of medical services, from advanced surgical procedures and cutting-edge treatments to preventive care and wellness programs.</p>
+            <p>As a patient-centered hospital, we prioritize your comfort, safety, and satisfaction. Our warm and welcoming environment, coupled with the latest medical technologies, ensures that you receive the best possible care in a setting that feels like home. We believe in open communication and collaboration, fostering strong relationships between our medical team and our patients.</p>
+            <p>Thank you for choosing OUR hospital for your healthcare needs. We are here to partner with you on your journey to optimal health, providing compassionate care that makes a difference in your life. Your well-being is our priority, and we are honored to be your trusted healthcare destination.</p>
+        </div>
+    </section>
+    
+</body>
+</html>
+{% endblock %}

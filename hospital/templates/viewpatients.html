@@ -1,0 +1,93 @@
+{% extends 'navbar.html' %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-Qj3p2q5RjPj4eNV3Fk9rD9C9Gq1p/4TkWG4t5X5reNP8XYD3i5XqslLb5c5EtBDl4clbE9a3V3wFMf1ULZjuFQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    th, td {
+        padding: 10px;
+        border: 1px solid #dddddd;
+        text-align: left;
+    }
+
+    th {
+        background-color: #f2f2f2;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+
+    tr:hover {
+        background-color: #f2f2f2;
+    }
+
+    .action-buttons button {
+        margin-right: 5px;
+        padding: 5px 10px;
+        border: none;
+        border-radius: 5px;
+        background-color: #007bff;
+        color: #ffffff;
+        cursor: pointer;
+    }
+</style>
+<body>
+    <h2 style="text-align: center;"><U><B>PATIENT'S LIST</B></U><img src="{% static 'images/patient.png' %}" height="70"></h2>
+    <table>
+        <tr>
+        <th>PATIENT NAME</th>
+        <th>CONTACT DETIALS</th>
+        <th>GENDER</th>
+        <th>IMAGE</th>
+        <th>ACTION</th>
+    </tr>
+    {% for i in patients %}
+    <tr>
+        <td>{{i.patientdetails.first_name}} {{i.patientdetails.last_name}}</td>
+        <td>{{i.phonenumber}}</td>
+        <td>{{i.gender}}</td>
+        {% if i.patientimage %}
+        <td><img src="{{ i.patientimage.url }}" height="100"></td>
+    {% else %}
+        <td>No Image Available</td>
+    {% endif %}
+        <td>
+            <form method="post" action="{% url 'editpatient' i.id %}" style="display: inline;">
+                {% csrf_token %}
+            
+                <button type="submit" class="btn btn-primary">
+                    &#9998; Edit
+                </button>
+        </form>
+        <form method="post" action="#" style="display: inline;">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">
+                <img src="{% static 'images/delete.png' %}" height="20"> DELETE
+            </button>
+        </form>
+            </td>
+    </tr>
+    {% endfor %}
+    </table>
+</body>
+</html>
+{% endblock %}

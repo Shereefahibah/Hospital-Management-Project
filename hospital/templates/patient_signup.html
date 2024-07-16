@@ -1,0 +1,154 @@
+{% extends 'navbar.html' %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'docsignup.css' %}">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <!-- Popper.js (required for Bootstrap's JavaScript) -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  
+    <!-- Bootstrap JavaScript -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<style>
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+.left {
+    background-image: url('{% static "images/patient.png" %}');
+    background-size: cover;
+    background-position: center;
+    flex: 2; /* Make the left side larger */
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+.left-content {
+    background: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.left-content img {
+    width: 100px;
+    margin-bottom: 20px;
+}
+
+.right {
+    flex: 1; /* Make the right side smaller */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.form-container {
+    max-width: 400px;
+    margin-top: 200px;
+    width: 100%;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+}
+
+.form-container h1 {
+    margin-bottom: 20px;
+}
+
+.form-container label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-container input[type="text"],
+.form-container input[type="number"],
+.form-container input[type="password"],
+.form-container input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box; 
+}
+
+.form-container button[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+}
+
+.form-container button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+</style>
+<body>
+    <div class="container">
+        <div class="left">
+            <div class="left-content">
+               
+                <h2>Empowering Healthcare, One Patient at a Time</h2>
+                <p>Your Health, Our Priority</p>
+            </div>
+        </div>
+        <div class="right">
+            <div class="form-container">
+                <h1><U>Patient Signup</h1></U>
+                <form method="post" action="{% url 'create_patient' %}" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <label for="fname">Patient First Name:</label>
+                    <input type="text" id="fname" name="fname">
+                    <label for="lname">Patient Last Name:</label>
+                    <input type="text" id="lname" name="lname">
+                    <label for="nmbr">Contact No:</label>
+                    <input type="number" id="nmbr" name="nmbr">
+                    <label for="gender">Gender:</label>
+                    <input type="radio" id="gender" name="gender" value="male">Male
+                    <input type="radio" id="gender" name="gender" value="female">Female
+                    <input type="radio" id="gender" name="gender" value="other">Other
+                    <label for="email">Email:</label>
+                    <input type="text" id="email" name="email">
+                    <label for="pswrd">Password:</label>
+                    <input type="password" id="pswrd" name="pswrd">
+                    <label for="cpswrd">Confirm Password:</label>
+                    <input type="password" id="cpswrd" name="cpswrd">
+                    <label for="img">Image:</label>
+                    <input type="file" id="img" name="img" accept="image/*">
+                    {% for i in messages %}
+                    <h4 class="error-message">{{ i }}</h4>
+                    {% endfor %}
+                    <button type="submit">Sign Up</button>
+                    <p class='text text-red mt-3'>Already a member? <a class="text-danger text-center sign" href="{% url 'patientlogin' %}">Login</a></p>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+{% endblock %}

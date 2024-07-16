@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f1f1f1;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: white;
+            padding: 20px;
+            border: 1px solid #ddd;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+            margin-top: 0;
+        }
+        .appointment-details {
+            margin-top: 20px;
+        }
+        .appointment-details p {
+            margin: 5px 0;
+        }
+        .alert {
+            background-color: #d9edf7;
+            border: 1px solid #bce8f1;
+            color: #31708f;
+            padding: 10px;
+            margin-top: 20px;
+        }
+        form {
+            margin-top: 20px;
+            text-align: center;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        a {
+            display: block;
+            margin-top: 20px;
+            text-align: center;
+            color: #007bff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Appointment Confirmation</h2>
+        <div class="appointment-details">
+            <p><strong>Patient Name:</strong> {{ appointment.patient }}</p>
+            <p><strong>Date:</strong> {{ appointment.date }}</p>
+            <p><strong>Time:</strong> {{ appointment.time }}</p>
+            <p><strong>Doctor:</strong> {{ appointment.doctor }}</p>
+            <p><strong>Location:</strong> Main Clinic, Room 202</p>
+            <p><strong>Appointment Type:</strong> Follow-up Consultation</p>
+        </div>
+
+        {% if message %}
+        <div class="alert">
+            {{ message }}
+        </div>
+        {% endif %}
+
+        <form action="{% url 'download_pdf' appointment.id %}" method="post">
+            {% csrf_token %}
+            <button type="submit">Download PDF</button>
+        </form>
+
+        <a href="{% url 'homepage' %}">Cancel</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,95 @@
+{% extends 'navbar.html' %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+     .container {
+    width: 70%;
+    margin: 0 auto; /* Center the container */
+    padding: 20px;
+}
+    /* appointment.css */
+
+/* Style for form container */
+.form-container {
+    width: 50%; /* Adjust the width as needed */
+    margin: 0 auto; /* Center the form horizontally */
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+/* Style for form labels */
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+/* Style for form inputs */
+input[type="text"],
+input[type="date"],
+input[type="time"],
+select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box; /* Ensure padding and border are included in width */
+}
+
+/* Style for submit button */
+button[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+}
+
+</style>
+<body>
+    <div class="container">
+        <h1><b><U>BOOK APPOINMENTS</U></b></h1>
+
+  
+    <form method="post" action="/appointmentedit/{{appoinments.id}}">
+        {% csrf_token %}
+        PATIENT NAME <select name="patient">
+            {% for i in patients %}
+            <option id="patient" value="{{i.id}}">{{i.patientdetails.first_name}}</option>
+            {% endfor %}
+        </select>
+        
+        <!-- Add the last_name field for doctors -->
+        DOCTOR NAME <select name="doctor">
+            {% for i in doctors %}
+            <option id="doctor" value="{{i.id}}">{{i.doctordetails.first_name}}</option>
+            {% endfor %}
+        </select>
+        <label>EMAIL</label>
+   
+    <input type="text" id="email" name="email" value="{{appoinments.patient.patientdetails.email}}">
+        <label>APPOINMENT DATE</label>
+        <input type="date" id="date" name="date" value="{{appoinments.date}}">
+        <label>APPOINMENT TIME</label>
+        <input type="time" id="time" name="time" value="{{appoinments.time}}">
+
+        <button type="submit">EDIT APPOINMENT</button>
+        
+
+    </form>
+</div>
+    
+</body>
+</html>
+{% endblock %}

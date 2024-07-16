@@ -1,0 +1,121 @@
+{% extends 'navbar.html' %}
+
+
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+           
+            width: 70%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .form-container {
+            background-image: url('{% static "images/hospital2.avif" %}');
+            background-repeat: no-repeat;
+            background-size: cover; /* Ensure the image covers the container */
+            background-position: center; /* Center the image */
+            background-attachment: fixed; /* Ensure the image stays in place */
+            height: 100%;
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 0.25rem;
+            padding: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            color: #004a99;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-control {
+            display: block;
+            width: 100%;
+            padding: 0.375rem 0.75rem;
+            font-size: 1rem;
+            line-height: 1.5;
+            color: #0e0b0a;
+            background-color: #fff;
+            background-clip: padding-box;
+            border: 1px solid #ced4da;
+            border-radius: 0.25rem;
+            transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+        }
+
+        .btn {
+            display: inline-block;
+            font-weight: 400;
+            color: #ffffff;
+            text-align: center;
+            vertical-align: middle;
+            cursor: pointer;
+            background-color: #007bff;
+            border: 1px solid #007bff;
+            padding: 0.375rem 0.75rem;
+            font-size: 1rem;
+            line-height: 1.5;
+            border-radius: 0.25rem;
+            transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+            border-color: #004a99;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="mb-4"><b><U>BOOK APPOINTMENTS</U><img src="{% static 'images/appoinment.jfif' %}" height="70"></b></h1>
+        <div class="form-container">
+            <form method="post" action="{% url 'bookappoinments' %}">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="patient">PATIENT NAME</label>
+                    <select class="form-control" name="patient" id="patient">
+                        {% for i in patients %}
+                        <option value="{{i.id}}">{{i.patientdetails.first_name}} {{i.patientdetails.last_name}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="doctor">DOCTOR NAME</label>
+                    <select class="form-control" name="doctor" id="doctor">
+                        {% for i in doctors %}
+                        <option value="{{i.id}}">{{i.doctordetails.first_name}} {{i.doctordetails.last_name}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="email">EMAIL</label>
+                    <input type="text" class="form-control" id="email" name="email">
+                </div>
+                <div class="form-group">
+                    <label for="date">APPOINTMENT DATE</label> 
+        <label>APPOINMENT DATE</label>
+        <input type="date" id="date" name="date">
+        <label>APPOINMENT TIME</label>
+        <input type="time" id="time" name="time">
+
+        <button type="submit"><img src="{% static 'images/appoinment.jfif' %}" height="40">BOOK APPOINMENT</button>
+        
+
+    </form>
+</div>
+    
+</body>
+</html>
+{% endblock %}

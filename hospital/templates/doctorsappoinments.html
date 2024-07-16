@@ -1,0 +1,77 @@
+{% extends 'navbar.html' %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ doctor.doctordetails.first_name }}'s Appointments</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>{{ doctor.doctordetails.first_name }}'s Appointments</h1>
+    
+    {% if appointments %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Patient</th>
+                    <th>Date</th>
+                    <th>Doctor</th>
+                    <th>Specialty</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for appointment in appointments %}
+                    <tr>
+                        <td>{{ appointment.patient }}</td>
+                        <td>{{ appointment.date }}</td>
+                        <td>{{ appointment.doctor.doctordetails.first_name }}</td>
+                        <td>{{ appointment.doctor.specification }}</td>
+                        <td>
+                            {% if appointment.status == 'Pending' %}
+                                <form action="{% url 'accept_appointment' appointment.id %}" method="post" style="display: inline;">
+                                    {% csrf_token %}
+                                    <button type="submit">Accept</button>
+                                </form>
+                                
+                                <form action="{% url 'reject_appointment' appointment.id %}" method="post" style="display: inline;">
+                                    {% csrf_token %}
+                                    <button type="submit">Reject</button>
+                                </form>
+                            {% endif %}
+                            
+                            {% if appointment.status == 'Accepted' %}
+                                <button disabled>Accepted</button>
+                            {% endif %}
+                            
+                            {% if appointment.status == 'Rejected' %}
+                                <button disabled>Rejected</button>
+                            {% endif %}
+                        </td>
+                    </tr> 
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No appointments scheduled.</p>
+    {% endif %}
+</body>
+</html>
+{% endblock %}

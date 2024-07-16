@@ -1,0 +1,38 @@
+.sidebar-box {
+    margin-left: 40%;
+   margin-top: 20%;
+            width: 200px; /* Adjust width as needed */
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background for better contrast */
+            border-radius: 8px; /* Rounded corners */
+            text-align: center; /* Center text and content */
+        }
+ .sidebar-box ul {
+            list-style-type: none;
+            padding: 0;
+        }
+  .sidebar-box li {
+            background-color: rgba(255, 255, 255, 0.1); /* Background color of each box */
+            padding: 10px;
+            border-radius: 4px; /* Rounded corners for each item */
+            margin-bottom: 5px; /* Spacing between items */
+        }
+.sidebar-box a {
+            text-decoration: none;
+            color: #fff; /* Link color */
+            display: flex;
+            align-items: center;
+            justify-content: center; /* Center items horizontally */
+        }
+ .sidebar-box a img {
+            margin-right: 10px; /* Adjust spacing between icon and text */
+        } 
+.sidebar-box a:hover {
+            color: #ccc; /* Hover color */
+        }
+ .sidebar-container {
+            margin-left: 50%;
+            width: 200px; 
+            text-align: center; 
+        }
+        

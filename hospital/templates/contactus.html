@@ -1,0 +1,111 @@
+{% extends 'navbar.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact</title>
+    <link rel="stylesheet" href="{% static 'css/contact.css' %}">
+
+    <!-- Bootstrap CSS CDN -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <!-- Bootstrap JS and dependencies CDN -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <style>
+        .header-image {
+            background-image: url("{% static 'images/hospital1.avif' %}");
+            background-size: cover;
+            background-position: center;
+            height: 500px;
+            position: relative;
+            color: rgb(48, 38, 139);
+        }
+        .header-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+        .header-content h1 {
+            font-size: 3em;
+        }
+        .header-content p {
+            font-size: 1.2em;
+            margin-bottom: 1em;
+        }
+        .header-content .btn {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+        .contact-card {
+            
+            color: rgb(16, 14, 14);
+            
+        }
+        .contact-card img {
+            width: 50px;
+            height: auto;
+            margin-bottom: 10px;
+        }
+        .contact-card h2 {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+        .contact-card p {
+            font-size: 0.9em;
+            color: #040303;
+        }
+    </style>
+</head>
+<body>
+    <header class="header-image">
+        <div class="header-content">
+            <h1>The Best Surgeons</h1>
+            <p>More than 3,300 physicians, scientists, and researchers</p>
+        </div>
+    </header>
+    <div class="container my-5">
+        <div class="row text-center">
+            <h1 class="w-100 mb-5">Contact Us</h1>
+            <div class="col-md-4 mb-4">
+                <div class="contact-card">
+                    <img src="{% static 'images/phone1.png' %}" alt="Phone">
+                    <h2>BY PHONE</h2>
+                    <p>
+                        <small>(Sunday to Saturday, 24 x 7)</small><br>
+                        India Toll-Free:<br> +91-877-930-7483<br><br>
+                        International:<br> +91-604-637-0780
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="contact-card">
+                    <img src="{% static 'images/mail.png' %}" alt="Mail">
+                    <h2>BY MAIL</h2>
+                    <p>
+                        <small>(Sunday to Saturday, 9am to 6pm IST)</small><br>
+                        Just send us your questions or concerns by sending a mail and we will give you the help you need.<br><br>
+                        abc@gmail.com
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <img src="{% static 'images/chat.jfif' %}" alt="Chat">
+                <h2>LIVE CHAT</h2>
+                <p>
+                    <small>(Sunday to Saturday, 24 x 7)</small><br>
+                    Chat with a member of our in-house team.
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+{% endblock %}

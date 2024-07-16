@@ -1,0 +1,99 @@
+{% extends 'navbar.html' %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'docsignup.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+
+    <!-- Popper.js (required for Bootstrap's JavaScript) -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  
+    <!-- Bootstrap JavaScript -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<style>
+     .container {
+    width: 70%;
+    margin: 0 auto; /* Center the container */
+    padding: 20px;
+}
+    /* docsignup.css */
+
+/* Style for form container */
+.form-container {
+    width: 50%; /* Adjust the width as needed */
+    margin: 0 auto; /* Center the form horizontally */
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+/* Style for form labels */
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+/* Style for form inputs */
+input[type="text"],
+input[type="number"],
+input[type="password"]
+{
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box; /* Ensure padding and border are included in width */
+}
+
+
+/* Style for submit button */
+button[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+}
+
+</style>
+<body>
+    <div class="container">
+        <h1><b><U>EDIT PATIENT</U></b></h1>
+  
+    <form method="post" action="/edit_patient/{{patients.id}}" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label>PATIENT FIRST NAME :</label>
+        <input type="text" id="name" name="fname"  value="{{patients.patientdetails.first_name}}">
+        <label>PATIENT LAST NAME :</label>
+        <input type="text" id="name" name="lname" value="{{patients.patientdetails.last_name}}">
+        <label>CONTACT NO:</label>
+        <input type="number" id="nmbr" name="nmbr" value="{{patients.phonenumber}}">
+        <label>GENDER :</label>
+        <input type="radio" id="gender" name="gender" value="male">MALE
+        <input type="radio" id="gender" name="gender" value="female">FEMALE
+        <input type="radio" id="gender" name="gender" value="other">OTHER
+        <label>EMAIL :</label>
+        <input type="text" id="email" name="email" value="{{patients.patientdetails.email}}">
+        <label>IMAGE</label>
+        <input type="file" id="img" name="img" accept="image/*">
+
+
+        <button type="submit">EDIT</button>
+
+    </form>
+</div>
+</body>
+</html>
+{% endblock %}

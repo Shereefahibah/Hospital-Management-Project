@@ -1,0 +1,104 @@
+{% extends 'navbar.html' %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital Management System</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .navbar-brand {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .navbar-nav .nav-link {
+            font-weight: bold;
+        }
+
+        .btn-appointment {
+            background-color: #00AEEF;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .banner {
+            position: relative;
+            background-image: url("{% static 'images/hospital3.avif' %}");
+            background-size: cover;
+            background-position: center;
+            height: 80vh;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .banner-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .banner-content h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .banner-content p {
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+
+        .btn-learn-more {
+            background-color: #00AEEF;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .content-section {
+            padding: 40px 0;
+        }
+    </style>
+</head>
+<body>
+    
+
+    <section class="banner">
+        <div class="banner-content">
+            <h1>Best Solution For Painful Life</h1>
+            
+        </div>
+    </section>
+
+    <div class="container content-section">
+        <h1 class="text-center">WELCOME TO OUR HOSPITAL PORTAL</h1>
+        <p style="text-align: justify;">
+            <i>A hospital is a healthcare institution providing patient treatment with specialized health science and auxiliary healthcare staff and medical equipment. The best-known type of hospital is the general hospital, which typically has an emergency department to treat urgent health problems ranging from fire and accident victims to a sudden illness. A district hospital typically is the major health care facility in its region, with many beds for intensive care and additional beds for patients who need long-term care.
+
+            Specialized hospitals include trauma centers, rehabilitation hospitals, children's hospitals, geriatric hospitals, and hospitals for specific medical needs, such as psychiatric hospitals for psychiatric treatment and other disease-specific categories. Specialized hospitals can help reduce health care costs compared to general hospitals. Hospitals are classified as general, specialty, or government depending on the sources of income received.
+
+            A teaching hospital combines assistance to people with teaching to health science students and auxiliary healthcare students. A health science facility smaller than a hospital is generally called a clinic. Hospitals have a range of departments (e.g. surgery and urgent care) and specialist units such as cardiology. Some hospitals have outpatient departments and some have chronic treatment units. Common support units include a pharmacy, pathology, and radiology.</i>
+        </p>
+    </div>
+</body>
+</html>
+{% endblock %}

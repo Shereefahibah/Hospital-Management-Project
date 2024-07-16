@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appointment Receipt</title>
+    <style>
+        /* Basic CSS for styling */
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f1f1f1;
+        }
+        .receipt-container {
+            padding: 20px;
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: white;
+            border: 1px solid #ddd;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .receipt-container h2 {
+            text-align: center;
+            margin-top: 0;
+        }
+        .appointment-details {
+            margin-top: 20px;
+        }
+        .appointment-details p {
+            margin: 5px 0;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+
+<div class="receipt-container">
+    <h2>Appointment Receipt</h2>
+    <div class="appointment-details">
+        <p><strong>Patient Name:</strong> {{ appointment.patient.patientdetails.first_name }} {{ appointment.patient.patientdetails.last_name }}</p>
+        <p><strong>Date:</strong> {{ appointment.date }}</p>
+        <p><strong>Time:</strong> {{ appointment.time }}</p>
+        <p><strong>Doctor:</strong> {{ appointment.doctor.doctordetails.first_name }} {{ appointment.doctor.doctordetails.last_name }}</p>
+        <p><strong>Location:</strong> Main Clinic, Room 202</p>
+        <p><strong>Appointment Type:</strong> Follow-up Consultation</p>
+    </div>
+</div>
+<div class="footer">
+    <p>Thank you for choosing our clinic!</p>
+</div>
+
+</body>
+</html>
